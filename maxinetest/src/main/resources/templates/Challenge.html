@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="indexhead"></div>
+<body class="" onload="alertmsg()">
+<div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="white">
+        <div class="logo">
+            <a href="#" class="simple-text logo-normal">
+                Maxine's WEB VULNERABILITY DETECT
+            </a>
+        </div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link " href="index.html" th:href="@{/index}">
+                        <i class="material-icons">dashboard</i>
+                        <p>Catalog</p>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="Challenge.html" th:href="@{/challenge}">
+                        <i class="material-icons">content_paste</i>
+                        <p>DETECT</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link active" href="rank.html" th:href="@{/rank}">
+                        <i class="material-icons">trending_up</i>
+                        <p>Sort</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="./notifications.html" th:href="@{/notice}">
+                        <i class="material-icons">notifications</i>
+                        <p>Notice</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+        <div th:replace="navbar"></div>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                    <form class="form"  id="registerForm" method="POST" action="" th:action="@{/search}">
+                        <div class="card-header card-header-primary" data-background-color="purple">
+                            <h4 class="card-title">Please enter the URL you would like to test below</h4>
+                        </div>
+                        <div class="card-body">
+                            <input type="text" name="url" th:value="${url}">
+                            <button type="submit" href=""  th:href="@{/notice}" >Submit</button>
+                            <div th:text="${url}"></div>
+<ol>  
+       <li>DETECT List
+            <table border="1">  
+              <tr>  
+                <th>Title</th>  
+                <th>No.</th>  
+                <th>Type</th>  
+                <th>URL</th>  
+                <th>DETECT URl</th>
+              </tr>  
+              <tr  th:each="user : ${typeChallengeMap[3]}">  
+                <td th:text="${user.title}">Onions</td>  
+                <td th:text="${user.cid}">test@test.com.cn</td>  
+                <td th:text="${user.type}">yes</td>  
+                 <th th:text="${user.link}">index</th>  
+                <th th:text="${user.description}">count</th>  
+              </tr>  
+            </table>  
+        </li> 
+        </ol>
+                        </div>
+</form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="footer"></div>
+
+
+</div>
+</div>
+<script th:inline="javascript" th:if="${not #strings.isEmpty(msg)}">
+    var msg=[[${msg}]]
+    function alertmsg() {
+        alert(msg);
+    }
+
+</script>
+<div th:replace="js"></div>
+</body>
+</html>

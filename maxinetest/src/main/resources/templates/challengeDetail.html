@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="indexhead"></div>
+<body class="">
+<div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="white">
+        <div class="logo">
+            <a href="#" class="simple-text logo-normal">
+                Maxine's WEB VULNERABILITY DETECT
+            </a>
+        </div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li class="nav-item active">
+                    <a class="nav-link " href="index.html" th:href="@{/admin/challengelist}">
+                        <i class="material-icons">dashboard</i>
+                        <p>DETECT</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="./notifications.html" th:href="@{/admin/notice}">
+                        <i class="material-icons">notifications</i>
+                        <p>Notice</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="./notifications.html" th:href="@{/admin/addchallenge}">
+                        <i class="material-icons">notifications</i>
+                        <p>AddQuestion</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="./notifications.html" th:href="@{/admin/noticelist}">
+                        <i class="material-icons">notifications</i>
+                        <p>NoticeList</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+        <!--<div th:replace="navbar"></div>-->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title">AddQuestions</h4>
+                                <p class="card-category">AddQuestionsAtHere</p>
+                            </div>
+                            <div class="card-body">
+                                <form th:action="@{/admin/editChallenge}" id="editChallenge" method="post">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">cid</label>
+                                                <input type="text" class="form-control" th:value="${challenge.cid}" name="cid">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">title</label>
+                                                <input type="text" class="form-control" th:value="${challenge.title}" name="title">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">link</label>
+                                                <input type="text" class="form-control" th:value="${challenge.link}" name="link">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">type(1easy，2medium，3hard)</label>
+                                                <input type="text" class="form-control" name="type" th:value="${challenge.type}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">flag</label>
+                                                <input type="text" class="form-control" name="flag" th:value="${challenge.flag}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="bmd-label-floating">description</label>
+                                                <textarea class="form-control" rows="5" name="description" th:text="${challenge.description}"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <form>
+
+                                    <button type="submit" form="editChallenge" class="btn btn-primary pull-right">AddQuestion</button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="footer"></div>
+    </div>
+</div>
+<div th:replace="js"></div>
+</body>
+</html>

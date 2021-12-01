@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="indexhead"></div>
+<body class="" onload="alertmsg()">
+<div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="white">
+        <div class="logo">
+            <a href="#" class="simple-text logo-normal">
+                MAXINE'S WEB VULNERABILITY DETECT
+            </a>
+        </div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link " href="index.html" th:href="@{/admin/challengelist}">
+                        <i class="material-icons">dashboard</i>
+                        <p>detection direction</p>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="./notifications.html" th:href="@{/admin/noticelist}">
+                        <i class="material-icons">notifications</i>
+                        <p>Note List</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="./notifications.html" th:href="@{/admin/notice}">
+                        <i class="material-icons">notifications</i>
+                        <p>Notice</p>
+                    </a>
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+            <div class="container-fluid">
+                <div class="navbar-wrapper">
+                    <a class="navbar-brand">MAXINE'S WEB VULNERABILITY DETECT</a>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon icon-bar"></span>
+                    <span class="navbar-toggler-icon icon-bar"></span>
+                    <span class="navbar-toggler-icon icon-bar"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end">
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" th:text="'hi '+${user.username}">hi!</a>
+                        </li>
+                        <li>
+                            <a href="#" id="logout" style="cursor:pointer">
+                                <i class="material-icons" style="font-size: 20px">power_settings_new</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-primary" data-background-color="purple">
+                                <h4 class="card-title">note</h4>
+                                <p class="card-category">note list</p>
+                            </div>
+                            <div class="card-body table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="text-primary">
+                                    <tr><th>ID</th>
+                                        <th>note</th>
+                                        <th>delate</th>
+                                    </tr></thead>
+                                    <tbody>
+                                    <tr style="cursor: pointer" th:each="notice:${noticeList}">
+                                        <td th:text="${notice.getNid()}"></td>
+                                        <td th:text="${notice.getDescription()}">P1umer</td>
+                                        <td><a th:href="'/admin/deleteNotice/'+${notice.getNid()}"><button class="btn btn-danger">delate note</button></a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="footer"></div>
+</div>
+</div>
+<script th:inline="javascript" th:if="${not #strings.isEmpty(msg)}">
+    var msg=[[${msg}]]
+    function alertmsg() {
+        alert(msg);
+    }
+</script>
+<div th:replace="js"></div>
+</body>
+</html>
